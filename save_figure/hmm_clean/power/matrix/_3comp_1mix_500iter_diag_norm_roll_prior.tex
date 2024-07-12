@@ -1,0 +1,28 @@
+
+    \documentclass{standalone}
+    \usepackage{tikz}
+    \usetikzlibrary{arrows, automata, positioning}
+    \begin{document}
+    \begin{tikzpicture}[shorten >=1pt, node distance=4cm, on grid, auto]
+    \node[state, fill=green] (S0) at (5,0) {low} ;
+\node[state, fill=red] (S1) at (-2,4) {high} ;
+\node[state, fill=blue] (S2) at (-2,-4) {medium} ;
+\path[->] (S0) edge [loop above] node {\(0.99\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.01\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.01\)} (S0);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S1) edge [loop above] node {\(0.99\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.01\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.01\)} (S1);
+\path[->] (S2) edge [bend left] node {\(0.01\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.01\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.01\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.01\)} (S2);
+\path[->] (S2) edge [loop above] node {\(0.99\)} (S2);
+
+    \end{tikzpicture}
+    \end{document}
+    

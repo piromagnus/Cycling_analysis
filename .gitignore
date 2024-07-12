@@ -1,0 +1,8 @@
+wandb/
+figures/
+save_model
+data/
+data_peu_utile/
+code_florent/
+test/test.py
+notebooks/

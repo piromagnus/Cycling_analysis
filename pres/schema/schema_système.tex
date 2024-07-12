@@ -1,0 +1,134 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta, positioning, decorations.pathmorphing,decorations.pathreplacing, shapes.misc, fadings, shadows}
+
+\begin{document}
+
+
+    % \begin{tikzpicture}[node distance=1.5cm, scale=0.7, every node/.style={scale=0.7}]
+
+    % % Define color gradient
+    % \begin{scope}
+    % \pgfdeclarehorizontalshading{arrowgradient}{1cm}{rgb(0cm)=(0.8,0.8,1); rgb(1cm)=(1,1,1)}
+    % \end{scope}
+    
+    % % Nodes
+    % \node[draw,rectangle,fill=red!70, minimum width=5cm,align=center, minimum height=4cm] (system) {\huge Athlète \\~\\ (Musculaire,\\Cardiovasculaire,\\neuromusculaire...)};
+    % \node[draw,rectangle, above left =-0.5cm and 1.5cm of system,align = center,minimum size=2.6cm] (env) {Environnement\\(externe)};
+    % \node[draw,rectangle, left= 1.5cm of system, minimum size=2.6cm] (energie) {Energie stockée};
+    % \node[draw,fill=blue!50,rectangle, below left= -0.5cm and 1.5cm of system, minimum size=2.6cm] (o2) {Oxygène};
+    % \node[draw,fill=yellow!50,rectangle, above =  of system, minimum size=1.5cm] (neuro) {Activation neuromusculaire};
+    % \node[draw,fill=green,align=center,rectangle, right= 3cm of system, minimum size=1.5cm] (output) {Charge Externe mesurée : \\Puissance,\\Vitesse,\\Distance,\\ ...};
+    % \node[draw,circle,fill=orange, below left=2cm and -.5cm of system, minimum size=1.5cm] (hr) {HR};
+    % \node[draw,circle,fill=orange, below right=2cm and -0.5cm of system, minimum size=1.5cm] (rpe) {RPE};
+    % \node[draw,circle,fill=orange, below =2cm of system, minimum size=1.5cm] (lt) {Lactate};
+    % \node[below of= lt] (measure) {Mesures de l'état du système \\ ~ Charge interne };
+    % \node[draw,circle,above right= of system,align = center, sloped,text =black,text width = 2cm] (eff) {Énergie produite par le muscle};
+
+    
+    % % Arrows
+    % \draw[->] (env) -- (system);
+    % \draw[->] (energie) -- (system);
+    
+    % % Special arrow with gradient
+    % % \draw[->, draw=none] (o2) -- (system) node[midway, above, draw=none] {VO2Max};
+    % % \draw[decorate,decoration={snake,segment length=15pt, amplitude=1mm, pre length=1mm,post length=1mm}] (o2) -- (system);
+    % % \shade[shading=arrowgradient, shading angle=0] ($(o2) + (-1cm,0.25cm)$) -- ($(o2) + (-1cm,-0.25cm)$) -- ($(system) + (-2cm,-0.15cm)$) -- ($(system) + (-2cm,0.15cm)$) -- cycle;
+    
+    % \begin{scope}
+    %     \shade[left color=blue, right color=blue!20, opacity=0.5]
+    %     (o2.east |- o2.north) -- 
+    %     (o2.east |- o2.south) -- 
+    %     (system.west |- system.center) -- 
+    %     cycle;
+    %     \node[opacity=1, above right=0.4cm and 0.5cm of o2.east, rotate=66, text=black] {\scriptsize VO2Max};
+    % \end{scope}
+
+    % \begin{scope}
+    %     \shade[left color=red, right color=green!50, opacity=0.7]
+    %     (system.east |- system.north) -- 
+    %     (system.east |- system.south) -- 
+    %     (output.west |- output.center) -- 
+    %     cycle;
+    %     \node[opacity=1,right = 2.5 cm of system.center,align = center, sloped,text =black,text width = 2cm] {\scriptsize Efficacité de la transmition};
+    %     % \node[opacity=1,below right = -.5cm and 1.5 cm of system.south,align = center, rotate = 90, sloped,text = black,text width = 2.5cm] {\scriptsize Énergie produite\\par le muscle};
+    % \end{scope}
+    % % \draw[fill=blue, draw=none, opacity=0.2] 
+    % %     (o2.east |- o2.north) -- 
+    % %     (o2.east |- o2.south) -- 
+    % %     (system.west |- system.center) -- 
+    % %     cycle node[opacity=1,right= 0.05cm of o2.east,rotate = 40] {VO2Max};
+
+    % % \draw[->] (system) -- (output) node[midway,align=center, above = 1cm, sloped, text width=4cm] {Efficacité de la transmition} 
+    % %\\(dépend du frottement,\\technique de courses,\\pédalage, aérodynamisme, vélo)} 
+    % %rotation of 90                            
+    
+    % \draw[->] (hr) -- (system);
+    % \draw[->] (rpe) -- (system);
+    % \draw[->] (lt) -- (system);
+    % \draw[->] (neuro) -- (system);
+    % \draw[->] (eff) -- (system.north east);
+    
+    % % Grouping measures
+    % \draw[dotted,color = red] ($(hr.north west)+(-0.4,0.4)$) rectangle ($(rpe.south east)+(0.6,-0.6)$);
+    % \node[draw,color = red,dotted,left=0.1cm of measure] {  };
+    
+    % \end{tikzpicture}
+    
+    \begin{tikzpicture}[transform shape]
+    
+        % Define styles
+        \tikzset{
+            axis/.style={->, >=latex},
+            graph/.style={thick, smooth},
+        }
+        
+        % Time axis
+        \draw (0,-1) -- (9,-1);
+        \draw[dashed,->] (9,-1) -- (10,-1) node[right] {Temps};
+        
+        % RPE Graph
+        \begin{scope}[yshift=6cm,xshift=3cm]
+            \draw[axis] (0,-1) -- (0,3) node[left] {RPE};
+            \draw[graph] plot[variable=\x,domain=0:10,samples=100] 
+                (\x,{1.5+0.7*sin(2*\x r)+0.3*sin(10*\x r)+0.2*rnd});
+            \node[anchor=north east] at (10,3) {RPE: G};
+            \node[anchor=south west, text width=3cm, align=left] at (0,3) {Perception / Monse de l'athlète};
+        \end{scope}
+        
+        % True state Graph
+        \begin{scope}[yshift=0cm]
+            \draw[axis] (0,-1) -- (0,5) node[left] {État};
+            \draw[graph] plot[variable=\x,domain=0:9,samples=100] 
+                (\x,{1+0.1*\x+0.7*cos(0.7*\x r)+sin(\x r)+0.6*sin(3*\x r)});
+            \draw[smooth,dashed] plot[variable=\x,domain=9:10,samples=100] 
+                (\x,{1+0.1*\x+0.7*cos(0.7*\x r)+sin(\x r)+0.6*sin(3*\x r)});
+            \node[anchor=south west] at (-4,3) {Vrai état (caché)};
+            % \node[anchor=north] at (5,-1) {état de l'athlète};
+            
+            % Sessions
+            \draw[decoration={brace,mirror,raise=5pt},decorate] (0,-1) -- node[below=6pt] {Séance monitorée} (5.9,-1);
+            \draw[decoration={brace,mirror,raise=5pt},decorate] (6,-1) -- node[below=6pt] {Récupération non monitorée} (10,-1);
+        \end{scope}
+        
+        % Power Graph
+        % \begin{scope}
+        %     \draw[axis] (0,0) -- (0,3) node[left] {Puissance};
+            
+        %     % Step function
+        %     \draw[graph] (0,0.5) -- (1,0.5) -- (1,1.5) -- (3,1.5) -- (3,1) -- 
+        %                  (5,1) -- (5,2) -- (7,2) -- (7,0.5) -- (9,0.5) -- (9,1.5) -- (10,1.5);
+            
+        %     % Add noise
+        %     \foreach \x in {0,0.1,...,10} {
+        %         \pgfmathsetmacro{\y}{0.1*rand}
+        %         \fill (\x,\y) circle (0.5pt);
+        %     }
+            
+        %     \node[anchor=south west, text width=3cm, align=left] at (0,3) {Contraintes / Puissance};
+        % \end{scope}
+        
+        \end{tikzpicture}
+
+\end{document}

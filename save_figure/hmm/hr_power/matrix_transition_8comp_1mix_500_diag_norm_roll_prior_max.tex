@@ -1,0 +1,90 @@
+
+    \documentclass{standalone}
+    \usepackage{tikz}
+    \usetikzlibrary{arrows, automata, positioning}
+    \begin{document}
+    \begin{tikzpicture}[shorten >=1pt, node distance=4cm, on grid, auto]
+    \node[state, fill=purple] (S0) at (5,0) {$State_2$} ;
+\node[state, fill=pink] (S1) at (3,3) {$State_5$} ;
+\node[state, fill=green] (S2) at (0,5) {$State_0$} ;
+\node[state, fill=red] (S3) at (-3,3) {$State_6$} ;
+\node[state, fill=blue] (S4) at (-5,0) {$State_1$} ;
+\node[state, fill=orange] (S5) at (-3,-3) {$State_4$} ;
+\node[state, fill=yellow] (S6) at (0,-5) {$State_3$} ;
+\node[state, fill=brown] (S7) at (3,-3) {$State_7$} ;
+\path[->] (S0) edge [loop above] node {\(0.98\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.01\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.01\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.01\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S5);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S7);
+\path[->] (S7) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S1) edge [bend left] node {\(0.01\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.01\)} (S1);
+\path[->] (S1) edge [loop above] node {\(0.98\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S5);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S2) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S2);
+\path[->] (S2) edge [loop above] node {\(0.99\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.00\)} (S5);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S2);
+\path[->] (S3) edge [loop above] node {\(0.99\)} (S3);
+\path[->] (S3) edge [bend left] node {\(0.01\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.01\)} (S3);
+\path[->] (S3) edge [bend left] node {\(0.00\)} (S7);
+\path[->] (S7) edge [bend left] node {\(0.01\)} (S3);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.01\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.01\)} (S3);
+\path[->] (S3) edge [bend left] node {\(0.01\)} (S4);
+\path[->] (S4) edge [loop above] node {\(0.98\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S7);
+\path[->] (S7) edge [bend left] node {\(0.00\)} (S4);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S5);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S5);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.00\)} (S5);
+\path[->] (S5) edge [loop above] node {\(0.99\)} (S5);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.01\)} (S5);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S1);
+\path[->] (S1) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S2);
+\path[->] (S2) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.00\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [bend left] node {\(0.01\)} (S5);
+\path[->] (S5) edge [bend left] node {\(0.00\)} (S6);
+\path[->] (S6) edge [loop above] node {\(0.99\)} (S6);
+\path[->] (S7) edge [bend left] node {\(0.00\)} (S0);
+\path[->] (S0) edge [bend left] node {\(0.00\)} (S7);
+\path[->] (S7) edge [bend left] node {\(0.01\)} (S3);
+\path[->] (S3) edge [bend left] node {\(0.00\)} (S7);
+\path[->] (S7) edge [bend left] node {\(0.00\)} (S4);
+\path[->] (S4) edge [bend left] node {\(0.00\)} (S7);
+\path[->] (S7) edge [loop above] node {\(0.99\)} (S7);
+
+    \end{tikzpicture}
+    \end{document}
+    
