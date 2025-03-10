@@ -12,6 +12,12 @@ Deux étapes principales sont nécessaires pour parvenir à cela.
 1. Transformation des données brutes par secondes de chaque séance en données normalisées par séance pour avoir un suivi longitutudinal. L'approche utilisé ici est de définir des zones de puissance avec des modèles de markov cachés et de calculer le temps passer dans chaque zones de puissances par séance.
 2. Entrainement d'un modèle de machine learning recursif avec un espace latent qui représente la forme de l'athlète. Le modèle est un LSTM + RESNET qui prend en entrée les données normalisées (de puissance) par séance et prédit la RPE.
 
+# Resultats
+![](save_figure/divers_figures/15600_solo/4_states_area_roll_low.png)
+![](save_figure/divers_figures/15600_solo/4_states_area_roll_medium.png)
+![](save_figure/divers_figures/15600_solo/4_states_area_roll_high.png)
+![](save_figure/divers_figures/15600_solo/4_states_area_roll_very_high.png)
+
 # Description du repo
 
 - lstm_code : code python pour l'entrainement et la prédiction d'un modèle LSTM + RESNET pour la prédiction de la RPE à partir de la puissance des séances.
