@@ -13,10 +13,15 @@ Deux étapes principales sont nécessaires pour parvenir à cela.
 2. Entrainement d'un modèle de machine learning recursif avec un espace latent qui représente la forme de l'athlète. Le modèle est un LSTM + RESNET qui prend en entrée les données normalisées (de puissance) par séance et prédit la RPE.
 
 # Resultats
+## Evolution of the mean power in each of the HR states
 ![](save_figure/divers_figures/15600_solo/4_states_area_roll_low.png)
 ![](save_figure/divers_figures/15600_solo/4_states_area_roll_medium.png)
 ![](save_figure/divers_figures/15600_solo/4_states_area_roll_high.png)
 ![](save_figure/divers_figures/15600_solo/4_states_area_roll_very_high.png)
+
+## Time spent in each state over the years
+![](save_figure/hmm_new_clean/power/time_spent_in_each_state_4comp_1mix_500_diag_norm_prior_mean.png)
+
 
 # Description du repo
 
