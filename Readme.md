@@ -16,7 +16,7 @@ Deux étapes principales sont nécessaires pour parvenir à cela.
 ![](save_figure/divers_figures/15600_solo/4_states_area_roll_low.png)
 ![](save_figure/divers_figures/15600_solo/4_states_area_roll_medium.png)
 ![](save_figure/divers_figures/15600_solo/4_states_area_roll_high.png)
-![](save_figure/divers_figures/15600_solo/4_states_area_roll_very high.png)
+![](save_figure/divers_figures/15600_solo/4_states_area_roll_very_high.png)
 
 # Description du repo
 
