@@ -1,3 +1,5 @@
+[English Version](Readme_en.md)
+
 # TODO :
 - Faire la pipeline de puissance par état.
 - check qu'il n'y a pas d'info perso dans les notebooks ? 
